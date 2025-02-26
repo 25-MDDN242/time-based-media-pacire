@@ -4,6 +4,5 @@
 
 ### THIS IS YOUR README
 
-Update this file as you go along to record your progress.
-
 For my Clock Design what I want to create is a visual clock inspired by Norse Mythology. Especially the Story of Skoll and Hati the two wolves that chase the sun and moon.
+To create my quick sketch of my concept I used Adobe Photoshop to make the quick sketch for the concept.
