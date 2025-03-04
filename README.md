@@ -14,3 +14,9 @@ my clock design.
 #### Maeda Clock
 
 For starters for my maeda I followed what phoebe showed us during our lecture time to firstly learn about the maeda clocks functionality.
+
+### Original Clock
+
+I started off by developing my clock by firstly doing the basic clock format so I can get a good foundation as we are going on. I also changed the default background to a dark blue to fit the theme
+that I am going for the project which will soon be changed to a gradient theme for a twilight, night kinda of theme to keep the Norse elements into them. For the clock functionality at the moment the clock seems to be working besides the bug that it is currently upside down. What I mean by that is that when we hit either 60 seconds, 60 minutes, 12 hours it would point at where a clock would point at
+30 seconds, 30 minutes, 6 hours.
