@@ -191,16 +191,15 @@ function draw_clock(obj) {
   imageMode(CENTER);
   push();
   translate(0, height / 2);
-  rotate(-secondRotate + 1700);
-  tint('red');
+  rotate(-minuteRotate);
   image(jormungandr, 0, 0, -400, -400);
   pop();
 
-  // push();
-  // translate(width, height / 2);
-  // rotate(-secondRotate);
-  // image(jormungandr, 0, 0, 400, 400);
-  // pop();
+  push();
+  translate(width, height / 2);
+  rotate(-minuteRotate);
+  image(jormungandr, 0, 0, 400, 400);
+  pop();
 
   //Set the mini sun and moon aswell as Skoll and Hati Image
   if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined ) {
