@@ -5,7 +5,7 @@ var skoll;
 var hati;
 var jormungandr;
 
-//Link to original image https://uk.pinterest.com/pin/390405861449185880/ was tweaked with adobe photoshop
+//Link to original image https://uk.pinterest.com/pin/390405861449185880/ and https://www.pngegg.com/en/png-toris was tweaked with adobe photoshop
 function preload() {
   skoll = loadImage("Skoll.png");
   hati = loadImage("Hati.png");
