@@ -26,5 +26,5 @@ I have managed to achieve the moon phase transition that I wanted for my clock. 
 ### Links for images and code used
 * https://uk.pinterest.com/pin/390405861449185880/
 * https://www.pngegg.com/en/png-toris
-  * https://editor.p5js.org/Pole/sketches/AotekHRKA
+* https://editor.p5js.org/Pole/sketches/AotekHRKA
 * https://editor.p5js.org/anjchang/sketches/S_rkFOKoP
