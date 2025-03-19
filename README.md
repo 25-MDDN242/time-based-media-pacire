@@ -24,7 +24,7 @@ that I am going for the project which will soon be changed to a gradient theme f
 I have managed to achieve the moon phase transition that I wanted for my clock. With this I managed to have the sun eclipsed by the background sky. So when the time is between 12am - 12pm the sky should eclipse the sun to represent the shift of day and night and then vice versa from 12pm - 12am to have the sun reappear to show the dawn.
 
 ### Links for images and code used
---* https://uk.pinterest.com/pin/390405861449185880/
---* https://www.pngegg.com/en/png-toris
---* https://editor.p5js.org/Pole/sketches/AotekHRKA
---* https://editor.p5js.org/anjchang/sketches/S_rkFOKoP
+⋅⋅* https://uk.pinterest.com/pin/390405861449185880/
+⋅⋅* https://www.pngegg.com/en/png-toris
+⋅⋅* https://editor.p5js.org/Pole/sketches/AotekHRKA
+⋅⋅* https://editor.p5js.org/anjchang/sketches/S_rkFOKoP
