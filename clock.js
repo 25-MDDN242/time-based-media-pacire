@@ -40,7 +40,7 @@ function draw_clock(obj) {
   let bg_color = color(0);
 
   //Shifting the Background Color
-  if (obj.seconds_until_alarm < 0) {
+  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined ) {
     if (obj.hours >= 0 && obj.hours < 12) {
       bg_color = lerpColor(color(19,0,61), color(135, 206, 235), map(obj.hours, 0, 12, 0, 1, true));
     } else if (obj.hours >= 12 && obj.hours <= 23) {
@@ -52,7 +52,7 @@ function draw_clock(obj) {
     } else if (obj.seconds >= 29 && obj.seconds <= 59) {
       bg_color = lerpColor(color(135, 206, 235), color(19,0,61), map(obj.seconds, 29, 59, 0, 1, true));
     }
-  } else {
+  } else { //Set the background to dark colors to represent Raganarok
     if (obj.millis >= 0 && obj.millis < 499) {
       bg_color = lerpColor(color(23,30,40), color(0), map(obj.millis, 0, 499, 0, 1, true));
     } else if (obj.millis >= 499 && obj.millis <= 999) {
@@ -64,17 +64,17 @@ function draw_clock(obj) {
   //Setting The Color of the Sun and Moon
   let moon_color = color(0);
   let sun_color = color(0);
-  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm > 0) {
+  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm > 0 || obj.seconds_until_alarm === undefined ) {
     moon_color = color(255);
     sun_color = color(255, 204, 51, 255);
-  } else {
+  } else { //Have sun and moon colors to dark colors to represent Ragnarok, Skoll and Hati eating both the sun and moon
     moon_color = color(0);
     sun_color = color(23,30,40);
   }
 
   //Shifting the moon phase transition depending on alarm setting
   let a = 0;
-  if (obj.seconds_until_alarm < 0) {
+  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined ) {
     a = map(obj.hours, 0, 23, 360, 0);
   } else if (obj.seconds_until_alarm > 0) {
     a = map(obj.seconds, 0, 59, 360, 0);
@@ -122,7 +122,7 @@ function draw_clock(obj) {
   fill(bg_color); // Background color to create cut-out effect
   ellipse(phasex, phasey, d2 + 125, d2 + 125); // Inner cut-out (hole)
 
-  // Norse Runes
+  // Norse Runes Link to Norse Symbols https://www.symbolstocopyandpaste.com/2022/04/runic-symbols-copy-paste-runes-alphabets-signs.html
   let runes = ["ᚠ", "ᚢ", "ᚦ", "ᚨ", "ᚱ", "ᚲ", "ᚷ", "ᚹ", "ᚻ", "ᚾ", "ᛁ", "ᛃ",
     "ᛇ", "ᛈ", "ᛉ", "ᛊ", "ᛏ", "ᛒ", "ᛖ", "ᛗ", "ᛚ", "ᛜ", "ᛟ", "ᛞ"];
   let radius = 206; // Adjust for spacing
@@ -132,7 +132,7 @@ function draw_clock(obj) {
   let ellipseCenterX = width / 2;  // Adjust if your ellipse center isn't exactly in the middle
   let ellipseCenterY = height / 2 - 50; // Adjust based on your existing drawing
 
-  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm > 0) {
+  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm > 0 || obj.seconds_until_alarm === undefined ) {
     fill(runeColor);
     push();
     translate(ellipseCenterX, ellipseCenterY);
@@ -188,12 +188,13 @@ function draw_clock(obj) {
   fill(color4);
   arc(phasex, phasey, widthPhase - 2, heightPhase + 1, 270, 90);
 
-  // imageMode(CENTER);
-  // push();
-  // translate(0, height / 2);
-  // rotate(-secondRotate + 1700);
-  // image(jormungandr, 0, 0, -400, -400);
-  // pop();
+  imageMode(CENTER);
+  push();
+  translate(0, height / 2);
+  rotate(-secondRotate + 1700);
+  tint('red');
+  image(jormungandr, 0, 0, -400, -400);
+  pop();
 
   // push();
   // translate(width, height / 2);
@@ -201,7 +202,8 @@ function draw_clock(obj) {
   // image(jormungandr, 0, 0, 400, 400);
   // pop();
 
-  if (obj.seconds_until_alarm < 0) {
+  //Set the mini sun and moon aswell as Skoll and Hati Image
+  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined ) {
     imageMode(CENTER);
     push();
     translate(width / 2, height / 2);
