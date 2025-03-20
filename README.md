@@ -29,3 +29,4 @@ I have managed to achieve the moon phase transition that I wanted for my clock. 
 * https://editor.p5js.org/Pole/sketches/AotekHRKA
 * https://editor.p5js.org/anjchang/sketches/S_rkFOKoP
 * https://www.symbolstocopyandpaste.com/2022/04/runic-symbols-copy-paste-runes-alphabets-signs.html
+* https://www.color-hex.com
