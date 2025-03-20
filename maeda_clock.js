@@ -7,7 +7,7 @@ function draw_clock(obj) {
     //    obj.minutes goes from 0-59
     //    obj.seconds goes from 0-59
     //    obj.millis goes from 0-999
-    
+
 
   angleMode(DEGREES);
 
@@ -20,7 +20,7 @@ function draw_clock(obj) {
   translate(width / 2, height / 2);
   rotate(secondsToDegrees);
   fill(200);
-  if (obj.hours <= 0 && obj.hours < 12) {
+  if (obj.hours >= 0 && obj.hours < 12) {
     text('AM', 0, 0);
   } else {
     text('PM', 0, 0);
