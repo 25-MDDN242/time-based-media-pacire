@@ -237,14 +237,14 @@ function draw_clock(obj) {
     translate(0, height / 2);
     rotate(-minuteRotate);
     tint(serpent_color);
-    image(jormungandr, 0, 0, -300, -300);
+    image(jormungandr, 10, 0, -300, -300);
     pop();
   
     push();
     translate(width, height / 2);
     rotate(-minuteRotate);
     tint(serpent_color);
-    image(jormungandr, 0, 0, 300, 300);
+    image(jormungandr, -10, 0, 300, 300);
     pop();
 
   } else if (obj.seconds_until_alarm > 0) {
@@ -269,14 +269,14 @@ function draw_clock(obj) {
     translate(0, height / 2);
     rotate(-minuteRotate);
     tint(serpent_color);
-    image(jormungandr, 0, 0, -300, -300);
+    image(jormungandr, 10, 0, -300, -300);
     pop();
   
     push();
     translate(width, height / 2);
     rotate(-minuteRotate);
     tint(serpent_color);
-    image(jormungandr, 0, 0, 300, 300);
+    image(jormungandr, -10, 0, 300, 300);
     pop();
 
   } else {
@@ -292,14 +292,14 @@ function draw_clock(obj) {
     translate(0, height / 2);
     rotate(-millisRotate);
     tint(serpent_color);
-    image(jormungandr, 0, 0, -300, -300);
+    image(jormungandr, 10, 0, -300, -300);
     pop();
   
     push();
     translate(width, height / 2);
     rotate(-millisRotate);
     tint(serpent_color);
-    image(jormungandr, 0, 0, 300, 300);
+    image(jormungandr, -10, 0, 300, 300);
     pop();
 
   }
