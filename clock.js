@@ -24,7 +24,7 @@ function draw_clock(obj) {
   //        = 0 if the alarm is currently going off
   //        > 0 --> the number of seconds until alarm should go off
 
-  textSize(40);
+  textSize(30);
   textAlign(CENTER, CENTER);
   angleMode(DEGREES);
 
@@ -61,15 +61,44 @@ function draw_clock(obj) {
   }
   background(bg_color);
 
-  //Setting The Color of the Sun and Moon
+  //Setting The Colors to lerp
   let moon_color = color(0);
   let sun_color = color(0);
-  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm > 0 || obj.seconds_until_alarm === undefined ) {
-    moon_color = color(255);
+  let torus_color = color(0);
+  let serpent_color = color(0);
+
+  if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined ) {
+    if (obj.hours >= 0 && obj.hours < 12) {
+      moon_color = lerpColor(color(253, 244, 220), color(255), map(obj.hours, 0, 12, 0, 1, true));
+      torus_color = lerpColor( color(62,49,49), color(139, 69, 19, 190), map(obj.hours, 0, 12, 0, 1, true));
+      serpent_color = lerpColor(color(23,30,40), color(0), map(obj.hours, 0, 12, 0, 1, true));
+    } else if (obj.hours >= 12 && obj.hours <= 23) {
+      moon_color = lerpColor(color(255), color(253, 244, 220), map(obj.hours, 12, 23, 0, 1, true));
+      torus_color = lerpColor(color(139, 69, 19, 190), color(62,49,49), map(obj.hours, 12, 23, 0, 1, true));
+      serpent_color = lerpColor(color(0), color(23,30,40), map(obj.hours, 12, 23, 0, 1, true));
+    }
+    sun_color = color(255, 204, 51, 255);
+  } else if (obj.seconds_until_alarm > 0) {
+    if (obj.seconds >= 0 && obj.seconds < 29) {
+      moon_color = lerpColor(color(253, 244, 220), color(255), map(obj.seconds, 0, 29, 0, 1, true));
+      torus_color = lerpColor(color(62,49,49), color(139, 69, 19, 190), map(obj.seconds, 0, 29, 0, 1, true));
+      serpent_color = lerpColor(color(23,30,40), color(0), map(obj.seconds, 0, 29, 0, 1, true));
+    } else if (obj.seconds >= 29 && obj.seconds <= 59) {
+      moon_color = lerpColor(color(255), color(253, 244, 220), map(obj.seconds, 29, 59, 0, 1, true));
+      torus_color = lerpColor(color(139, 69, 19, 190), color(62,49,49), map(obj.seconds, 29, 59, 0, 1, true));
+      serpent_color = lerpColor(color(0), color(23,30,40), map(obj.seconds, 29, 59, 0, 1, true));
+    }
     sun_color = color(255, 204, 51, 255);
   } else { //Have sun and moon colors to dark colors to represent Ragnarok, Skoll and Hati eating both the sun and moon
     moon_color = color(0);
     sun_color = color(23,30,40);
+    if (obj.millis >= 0 && obj.millis < 499) {
+      torus_color = lerpColor(color(62,49,49), color(139, 69, 19, 190), map(obj.millis, 0, 499, 0, 1, true));
+      serpent_color = lerpColor(color(0), color(23,30,40), map(obj.millis, 0, 499, 0, 1, true));
+    } else if (obj.millis >= 499 && obj.millis <= 999) {
+      torus_color = lerpColor(color(139, 69, 19, 190), color(62,49,49), map(obj.millis, 499, 999, 0, 1, true));
+      serpent_color = lerpColor(color(23,30,40), color(0), map(obj.millis, 499, 999, 0, 1, true));
+    }
   }
 
   //Shifting the moon phase transition depending on alarm setting
@@ -115,22 +144,24 @@ function draw_clock(obj) {
   }
 
   // Donut Shape (Stationary)
-  noStroke();
-  fill(139, 69, 19, 190);
+  //noStroke();
+  stroke(0);
+  fill(torus_color);
   ellipse(phasex, phasey, d2 + 200, d2 + 200); // Outer ring
 
   fill(bg_color); // Background color to create cut-out effect
   ellipse(phasex, phasey, d2 + 125, d2 + 125); // Inner cut-out (hole)
 
+  noStroke();
   // Norse Runes Link to Norse Symbols https://www.symbolstocopyandpaste.com/2022/04/runic-symbols-copy-paste-runes-alphabets-signs.html
   let runes = ["ᚠ", "ᚢ", "ᚦ", "ᚨ", "ᚱ", "ᚲ", "ᚷ", "ᚹ", "ᚻ", "ᚾ", "ᛁ", "ᛃ",
     "ᛇ", "ᛈ", "ᛉ", "ᛊ", "ᛏ", "ᛒ", "ᛖ", "ᛗ", "ᛚ", "ᛜ", "ᛟ", "ᛞ"];
-  let radius = 206; // Adjust for spacing
+  let radius = 205; // Adjust for spacing
 
   let runeColor = color(0);
 
   let ellipseCenterX = width / 2;  // Adjust if your ellipse center isn't exactly in the middle
-  let ellipseCenterY = height / 2 - 50; // Adjust based on your existing drawing
+  let ellipseCenterY = height / 2 - 45; // Adjust based on your existing drawing
 
   if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm > 0 || obj.seconds_until_alarm === undefined ) {
     fill(runeColor);
@@ -188,19 +219,6 @@ function draw_clock(obj) {
   fill(color4);
   arc(phasex, phasey, widthPhase - 2, heightPhase + 1, 270, 90);
 
-  imageMode(CENTER);
-  push();
-  translate(0, height / 2);
-  rotate(-minuteRotate);
-  image(jormungandr, 0, 0, -400, -400);
-  pop();
-
-  push();
-  translate(width, height / 2);
-  rotate(-minuteRotate);
-  image(jormungandr, 0, 0, 400, 400);
-  pop();
-
   //Set the mini sun and moon aswell as Skoll and Hati Image
   if (obj.seconds_until_alarm < 0 || obj.seconds_until_alarm === undefined ) {
     imageMode(CENTER);
@@ -211,8 +229,22 @@ function draw_clock(obj) {
     image(hati, 150, 0, 150, 150);
     fill(sun_color);
     ellipse(0, -160, 30, 30);
-    fill(moon_color);
+    fill(255);
     ellipse(0, 160, 30, 30);
+    pop();
+
+    push();
+    translate(0, height / 2);
+    rotate(-minuteRotate);
+    tint(serpent_color);
+    image(jormungandr, 0, 0, -300, -300);
+    pop();
+  
+    push();
+    translate(width, height / 2);
+    rotate(-minuteRotate);
+    tint(serpent_color);
+    image(jormungandr, 0, 0, 300, 300);
     pop();
 
   } else if (obj.seconds_until_alarm > 0) {
@@ -222,7 +254,7 @@ function draw_clock(obj) {
     rotate(secondRotate);
     fill(sun_color);
     ellipse(0, -160, 30, 30);
-    fill(moon_color);
+    fill(255);
     ellipse(0, 160, 30, 30);
     pop();
 
@@ -233,6 +265,19 @@ function draw_clock(obj) {
     image(hati, 150, 0, 150, 150);
     pop();
 
+    push();
+    translate(0, height / 2);
+    rotate(-minuteRotate);
+    tint(serpent_color);
+    image(jormungandr, 0, 0, -300, -300);
+    pop();
+  
+    push();
+    translate(width, height / 2);
+    rotate(-minuteRotate);
+    tint(serpent_color);
+    image(jormungandr, 0, 0, 300, 300);
+    pop();
 
   } else {
     imageMode(CENTER);
@@ -242,6 +287,21 @@ function draw_clock(obj) {
     image(skoll, -140, 0, 150, 150);
     image(hati, 150, 0, 150, 150);
     pop();
+
+    push();
+    translate(0, height / 2);
+    rotate(-secondRotate);
+    tint(serpent_color);
+    image(jormungandr, 0, 0, -300, -300);
+    pop();
+  
+    push();
+    translate(width, height / 2);
+    rotate(-secondRotate);
+    tint(serpent_color);
+    image(jormungandr, 0, 0, 300, 300);
+    pop();
+
   }
 }
 
