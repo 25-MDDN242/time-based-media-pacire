@@ -28,8 +28,6 @@ function draw_clock(obj) {
   textAlign(CENTER, CENTER);
   angleMode(DEGREES);
 
-  // text("YOUR MAIN CLOCK CODE GOES HERE", width / 2, 200);
-
   //Maps for the rotation of objects
   let millisRotate = map(obj.millis, 0, 999, 0, 360);
   let secondRotate = map(obj.seconds, 0, 59, 0, 360);
@@ -302,16 +300,5 @@ function draw_clock(obj) {
     image(jormungandr, -10, 0, 300, 300);
     pop();
 
-  }
-}
-
-//Code used from https://editor.p5js.org/REAS/sketches/S1TNUPzim, Determining whether if used
-function setGradient(c1, c2) {
-  noFill();
-  for (var y = 0; y < height; y++) {
-    var inter = map(y, 0, height, 0, 1);
-    var c = lerpColor(c1, c2, inter);
-    stroke(c);
-    line(0, y, width, y);
   }
 }
