@@ -290,14 +290,14 @@ function draw_clock(obj) {
 
     push();
     translate(0, height / 2);
-    rotate(-secondRotate);
+    rotate(-millisRotate);
     tint(serpent_color);
     image(jormungandr, 0, 0, -300, -300);
     pop();
   
     push();
     translate(width, height / 2);
-    rotate(-secondRotate);
+    rotate(-millisRotate);
     tint(serpent_color);
     image(jormungandr, 0, 0, 300, 300);
     pop();
